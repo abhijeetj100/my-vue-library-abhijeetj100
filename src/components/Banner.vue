@@ -9,7 +9,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component
 export default class Banner extends Vue {
   @Prop({ type: String, default: 'top', validator: (position) => ['top', 'bottom'].indexOf(position) > -1 }) public position!: string;
-  @Prop({ type: Object, default: () => {}, validator: (position) => ['top', 'bottom'].indexOf(position) > -1 }) public styles!: Object;
+  @Prop({ type: Object, default: () => {} }) public styles!: Object;
 
   bannerStyles () {
     return {
