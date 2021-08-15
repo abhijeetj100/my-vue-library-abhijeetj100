@@ -1,12 +1,22 @@
 {
   "name": "my-vue-library-abhijeetj100",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.2.3",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "build-bundle": "vue-cli-service build --target lib --name my-vue-library-abhijeetj100 ./src/components/index.ts  && npm pack && shx mv ./my-vue-library-abhijeetj100-0.2.3.tgz .."
   },
+  "main": "./dist/my-vue-library-abhijeetj100.common.js",
+  "types": "./types/index.d.ts",
+  "files": [
+    "dist/*",
+    "src/*",
+    "public/*",
+    "*.json",
+    "*.js",
+    "types/*"
+  ],
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
@@ -35,6 +45,7 @@
     "lint-staged": "^9.5.0",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
+    "shx": "^0.3.3",
     "typescript": "~4.1.5",
     "vue-template-compiler": "^2.6.11"
   },
@@ -51,20 +62,22 @@
     "parserOptions": {
       "ecmaVersion": 2020
     },
-    "rules": {}
+    "rules": {},
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not dead"
-  ],
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,vue,ts,tsx}": [
-      "vue-cli-service lint",
-      "git add"
-    ]
-  }
+  ]
 }
