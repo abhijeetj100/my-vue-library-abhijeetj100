@@ -11,7 +11,7 @@ export default class Banner extends Vue {
   @Prop({ type: String, default: 'top', validator: (position) => ['top', 'bottom'].indexOf(position) > -1 }) public position!: string;
   @Prop({ type: Object, default: () => {} }) public styles!: Object;
 
-  bannerStyles () {
+  get bannerStyles () {
     return {
       ...defaultStyles,
       ...this.styles
